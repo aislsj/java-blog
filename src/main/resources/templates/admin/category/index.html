@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head  th:replace="~{admin/commons/_fragments::head(~{::title})}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>H+ 后台主题UI框架 - 项目</title>
+
+
+</head>
+
+<body class="gray-bg">
+
+<div class="wrapper wrapper-content animated fadeInUp">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        <form role="search" class="navbar-form-custom" >
+          <div class="form-group">
+            <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="search" id="top-search">
+          </div>
+        </form>
+      </div>
+
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>分类</h5>
+          <div class="ibox-tools">
+            <a th:href="@{/admin/category/input}" class="btn btn-primary btn-xs">添加</a>
+            <span class="btn btn-primary btn-xs"><b id="tot">1</b>&nbsp;条数据</span>
+          </div>
+        </div>
+
+        <div class="ibox-content">
+          <div class="project-list">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <td class="project-completion center"><small>id</small></td>
+                <td class="project-people center" >名称</td>
+                <td class="project-people center" >操作</td>
+
+              </tr>
+
+                <tr th:each="category,iterStat:${page.content}">
+                  <td class="project-completion center" th:text="${iterStat.count}"></td>
+                  <td class="project-people center" th:text="${category.name}"></td>
+                  <td class="project-people center">
+                    <a th:href="@{/admin/category/{id}/input(id=${category.id})}">修改</a>
+                    <a th:href="@{/admin/category/{id}/input(id=${category.id})}">删除</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="panel-footer">
+          <a th:href="@{/admin/category(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
+          <a th:href="@{/admin/category(page=${page.number}+1)}">下一页</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script th:src="@{/admin/js/jquery.min.js?v=2.1.4}"></script>
+<script th:src="@{/admin/js/bootstrap.min.js?v=3.3.6}"></script>
+<script th:src="@{/admin/js/content.min.js?v=1.0.0}"></script>
+
+</body>
+
+</html>
