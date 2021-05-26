@@ -13,10 +13,14 @@ public interface CategoryService {
 
     Category updateCategory(Long id,Category category);
 
-
     Page<Category> listCategory(Pageable pageable);
 
     void delCategory(Long id);
 
     List<Category> allCategory();
+
+
+    Category findByName(String name);
+
+
 }

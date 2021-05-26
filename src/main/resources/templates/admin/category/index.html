@@ -27,6 +27,13 @@
       <div class="ibox">
         <div class="ibox-title">
           <h5>分类</h5>
+
+          <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+          </div>
+
           <div class="ibox-tools">
             <a th:href="@{/admin/category/input}" class="btn btn-primary btn-xs">添加</a>
             <span class="btn btn-primary btn-xs"><b id="tot">1</b>&nbsp;条数据</span>
@@ -49,7 +56,7 @@
                   <td class="project-people center" th:text="${category.name}"></td>
                   <td class="project-people center">
                     <a th:href="@{/admin/category/{id}/input(id=${category.id})}">修改</a>
-                    <a th:href="@{/admin/category/{id}/input(id=${category.id})}">删除</a>
+                    <a th:href="@{/admin/category/{id}/delete(id=${category.id})}">删除</a>
                   </td>
                 </tr>
               </tbody>

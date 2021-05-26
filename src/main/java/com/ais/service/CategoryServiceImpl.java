@@ -37,6 +37,11 @@ public  class CategoryServiceImpl implements CategoryService {
     }
 
 
+    @Override
+    public Category findByName(String name) {
+        return categoryRepository.findByName(name);
+    }
+
     @Transactional
     @Override
     public Category updateCategory(Long id, Category category) {

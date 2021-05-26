@@ -3,6 +3,7 @@ package com.ais.entity;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class Category {
     private long id;
     private  int sub_id;
     private  int sort;
+    @NotBlank(message = "分类名不能为空")
     private String name;
     private String image;
 

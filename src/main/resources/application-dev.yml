@@ -9,20 +9,35 @@ spring:
     url: jdbc:mysql://localhost:3306/java_blog?serverTimezone=GMT&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
+
+
+
+
+
   jpa:
     hibernate:
+      dialect: org.hibernate.dialect.MySQL5InnoDBDialect
       ddl-auto: update
       show-sql: true
       generate-ddl: true
+      datasource:
+        druid:
+          connection-init-sqls: [ "SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci" ]
 
-      database:
-        platform: org.hibernate.dialect.MySQL5InnoDBDialect
+#    jpa: #JPA配置
+#      show-sql: true
+#      generate-ddl: true
+#      ddl-auto: update
+##      properties:
+##        hibernate:
+##          dialect: org.ais.config.MySQL5InnoDBDialectUtf8mb4
+#      database-platform: org.ais.config.MySQL5InnoDBDialectUtf8mb4 #方言
+#  #      database-platform: org.hibernate.dialect.MySQL5InnoDBDialect #方言
+#
+
 
   logging:
     level:
       root: info
       com.ais: debug
       file: log/blog-dev.log
-
-
-
