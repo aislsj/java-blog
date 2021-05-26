@@ -18,7 +18,7 @@ public class ArticleController {
     private ArticleService articleService;
 
 
-    @GetMapping("/articles")
+    @GetMapping("/article")
     public String index(@PageableDefault(size = 2,sort = {"updateTime"},direction = Sort.Direction.DESC)
                   Pageable pageable, Article article, Model model){
 

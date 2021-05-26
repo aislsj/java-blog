@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.stereotype.Service;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -15,9 +16,8 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
-
+@Service
 public class ArticleServiceImpl implements ArticleService{
-
     @Autowired
     ArticleRepository articleRepository;
 
@@ -47,7 +47,7 @@ public class ArticleServiceImpl implements ArticleService{
                 if(!"".equals(article.getArticle_name()) && article.getArticle_name()!= null){
                     predicates.add(cb.like(root.<String>get("Article_name"),"%"+article.getArticle_name()+"%"));
                 }
-//                if(article.getCategory().getId() != null){
+//                if(article.getCategory().getId() != 0){
 //                    predicates.add(cb.equal(root.<Category>get("category").get("id"),article.getCategory().getId()));
 //                }
 //                if(article.isRecommend()){

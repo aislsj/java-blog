@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head  th:replace="~{admin/commons/_fragments::head(~{::title})}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>H+ 后台主题UI框架 - 项目</title>
+
+
+</head>
+
+<body class="gray-bg">
+<style>
+  .center{text-align：center}
+</style>
+
+<div class="wrapper wrapper-content animated fadeInUp">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+        <form role="search" class="navbar-form-custom" >
+          <div class="form-group">
+            <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="search" id="top-search">
+          </div>
+        </form>
+      </div>
+
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>博客文章</h5>
+
+          <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
+            <i class="close icon"></i>
+            <div class="header">提示：</div>
+            <p th:text="${message}">恭喜，操作成功！</p>
+          </div>
+
+          <div class="ibox-tools">
+            <a th:href="@{/admin/category/input}" class="btn btn-primary btn-xs">添加</a>
+            <span class="btn btn-primary btn-xs"><b id="tot">1</b>&nbsp;条数据</span>
+          </div>
+        </div>
+
+        <div class="ibox-content">
+          <div class="project-list">
+            <table class="table table-hover">
+              <tbody>
+              <tr>
+                <td class="col-md-2 center"><small>id</small></td>
+                <td class="col-md-2 center" >标题</td>
+                <td class="col-md-2 center" >首页图</td>
+                <td class="col-md-1 center" >文章所属</td>
+                <td class="col-md-1 center" >是否推荐</td>
+                <td class="col-md-1 center" >是否发表</td>
+                <td class="col-md-1 center" >添加时间</td>
+                <td class="col-md-1 center" >修改时间</td>
+                <td class="col-md-2 center" > 操作</td>
+              </tr>
+                <tr th:each="category,iterStat:${page.content}">
+                  <td class=" center" th:text="${iterStat.count}"></td>
+                  <td class=" center" th:text="${category.article_name}"></td>
+                  <td class=" center" th:text="首页图"></td>
+                  <td class=" center" th:text="文章所属"></td>
+                  <td class=" center" th:text="${category.recommend}?'是':'否' "></td>
+                  <td class=" center" th:text="是否发表"></td>
+                  <td class=" center" th:text="2007.10.26"></td>
+                  <td class=" center" th:text="2007.10.26"></td>
+
+                  <td class=" center">
+                    <a th:href="@{/admin/article/{id}/input(id=${article.id})}">修改</a>
+                    <a th:href="@{/admin/article/{id}/delete(id=${article.id})}">删除</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+        <div class="panel-footer" th:if="${page.totalPages}>1">
+          <a onclick="page(this)" th:attr="data-page=${page.number}-1" th:unless="${page.first}">上一页</a>
+          <a onclick="page(this)" th:attr="data-page=${page.number}+1" th:unless="${page.last}">下一页</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function
+</script>
+<script th:src="@{/admin/js/jquery.min.js?v=2.1.4}"></script>
+<script th:src="@{/admin/js/bootstrap.min.js?v=3.3.6}"></script>
+<script th:src="@{/admin/js/content.min.js?v=1.0.0}"></script>
+
+</body>
+
+</html>
